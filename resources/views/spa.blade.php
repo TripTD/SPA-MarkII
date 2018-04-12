@@ -10,6 +10,10 @@
     <script type="text/javascript">
 
         var checked;
+
+        /**
+         * Method used to assign true or false to global var checked if an user is authenthicated or not
+         */
         function checkLogged() {
             $.ajax({
                 url: '/login',
@@ -20,6 +24,9 @@
             });
         }
 
+        /**
+         * Method used to trigger the logout function
+         */
         $(document).on('click', '.logout', function () {
             $.ajax({
                 url: '/logout',
@@ -31,6 +38,10 @@
                 }
             });
         });
+
+        /**
+         * Method used to add items to cart
+         */
         $(document).on('click', '.add-to-cart', function () {
             var id = $(this).attr('data-id');
             $.ajax({
@@ -41,6 +52,9 @@
             });
         });
 
+        /**
+         * Method used to remove items from the cart
+         */
         $(document).on('click', '.remove-from-cart', function () {
             var id = $(this).attr('data-id');
             $.ajax({
@@ -51,6 +65,9 @@
             });
         });
 
+        /**
+         * Method used to send the form data to postLogin function
+         */
         $(document).on('submit', '#login', function (e) {
             e.preventDefault();
 
@@ -78,6 +95,9 @@
             });
         });
 
+        /**
+         * Method used to trigger the sendOrder function to send an email
+         */
         $(document).on('submit', '#SendOrder', function (e) {
             e.preventDefault();
 
@@ -105,6 +125,9 @@
             });
         });
 
+        /**
+         * Method used to remove an item from the database
+         */
         $(document).on('click', '.remove-item', function () {
             var id = $(this).attr('data-id');
             $.ajax({
@@ -115,6 +138,9 @@
             });
         });
 
+        /**
+         * Method used to send form data for editing or adding a new item
+         */
         $(document).on('submit', '#editInsert', function (e) {
             e.preventDefault();
 
@@ -142,6 +168,9 @@
 
         $(document).ready(function () {
 
+            /**
+             * Method used to identify a cart type page based on a regexp
+             */
             function cartIdentifier() {
 
                 var identifier = window.location.hash;
@@ -154,6 +183,9 @@
                 }
             }
 
+            /**
+             * Method used to identify a product type page based on a regexp
+             */
             function productIdentifier() {
 
                 var identifier = window.location.hash;
@@ -166,6 +198,9 @@
                 }
             }
 
+            /**
+             * Method used to identify a products type page based on a regexp
+             */
             function productsIdentifier() {
 
                 var identifier = window.location.hash;
@@ -231,6 +266,9 @@
                 return html;
             }
 
+            /**
+             * Method used to render the Login form
+             */
             function renderLogin() {
                 html = [
                     '<form id="login" method="post">',
@@ -244,6 +282,9 @@
                 return html;
             }
 
+            /**
+             * Method used to render the form used in editing and adding the products
+             */
             function renderProduct() {
                 html = [
                     '<form id="editInsert" method="post" enctype="multipart/form-data">',
@@ -259,6 +300,9 @@
                 return html;
             }
 
+            /**
+             * Method used to render the form used by the client when sending the order through email
+             */
             function renderSendOrder() {
                 html = [
                     '<form id="SendOrder" method="POST">',
